@@ -3,7 +3,8 @@
    <Teste/>
     <img src="./assets/chaton.jpg">
 <!--    <HelloWorld/> -->
-<Promotion v-for="name in names" v-bind:name="name"></Promotion>
+<Promotion v-for="promotion in promotions" v-bind:key="promotion.id" v-bind:name="promotion.name"></Promotion>
+<!--<Promotion v-for="name in names" v-bind:key="name" v-bind:name="name"></Promotion> -->
   </div>
 </template>
 
@@ -21,7 +22,18 @@ export default {
   },
   data () {
     return {
-      names: ["Aaron Swartz","Jimmy Wales","John Perry Barlow","Margaret hamilton"]
+      names: ["Aaron Swartz","Jimmy Wales","John Perry Barlow","Margaret hamilton"],
+      promotions: []
+    }
+  },
+  methods: {
+    getPromotions: function() {
+      fetch("http://api-students.popschool-lens.fr/api/promotions")
+      .then(r => r.json())
+      .then(r => function () {
+        console.log("ok")
+        this.promotion = r["hydra:member"]
+      })
     }
   }
 };
