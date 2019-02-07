@@ -28,13 +28,16 @@ export default {
   },
   methods: {
     getPromotions: function() {
-      fetch("http://api-students.popschool-lens.fr/api/promotions")
+      fetch("http://api-students.popschool-lens.fr/api/promotions/")
       .then(r => r.json())
-      .then(r => function () {
+      .then(r =>  {
         console.log("ok")
-        this.promotion = r["hydra:member"]
+        this.promotions = r["hydra:member"]
       })
     }
+  },
+  mounted () {
+    this.getPromotions()
   }
 };
 </script>
