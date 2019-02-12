@@ -1,6 +1,7 @@
 <template>
     <div class="studentItem">
-    <h1> Jean-Pierre </h1>
+    <h1> {{ me.firstname + " " +me.lastname}} </h1>
+    <div> {{myURL}} </div>
     </div>
 </template>
 
@@ -8,7 +9,30 @@
 
 export default {
   name: 'Student',
-  };
+  data() {
+      return {
+      me: {},
+      }
+  },
+  props: {
+      myURL: String,
+  },
+  methods: {
+      getMe: function () {
+          fetch("http://api-students.popschool-lens.fr" + this.myURL)
+          .then(r => r.json())
+          .then(r => {
+              console.log(r)
+              this.me = r;
+          })
+      }
+
+      },
+  
+  mounted () {
+      this.getMe()
+  }
+}
 
 </script>
 

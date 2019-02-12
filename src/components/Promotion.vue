@@ -5,7 +5,7 @@
        <div> {{ promotion.id }}
          - Début: {{ promotion.startDate }}
           - Fin: {{ promotion.endDate }}</div> 
-          <Student v-for="student in promotion.students"></Student>
+          <Student  v-for="(studentURL,index) in promotion.students" v-bin:key="index" v-bind:myURL="studentURL"></Student>
        <!--   <ul class="studentList">
             <li v-for="studentURL in promotion.students" class="studentItem">{{ studentURL }}</li>
           </ul> -->
