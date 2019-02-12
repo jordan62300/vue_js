@@ -26,7 +26,10 @@ export default {
     },
     methods: {
         update(event) {
-            console.log(event.target.value);
+            console.log(promotion.name + "updated");
+        },
+        delete(event) {
+            console.log(promotion.name + "deleted")
         }
     }
   };
