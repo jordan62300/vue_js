@@ -2,8 +2,8 @@
   <div id="app">
    <Teste/>
     <img src="./assets/chaton.jpg">
-<!--    <HelloWorld/> -->
-<Promotion v-for="promotion in promotions" v-bind:key="promotion.id" v-bind:name="promotion.name"></Promotion>
+
+<Promotion v-for="promotion in promotions" v-bind:key="promotion.id" v-bind:promotion="promotion"></Promotion>
 <!--<Promotion v-for="name in names" v-bind:key="name" v-bind:name="name"></Promotion> -->
   </div>
 </template>
@@ -22,7 +22,6 @@ export default {
   },
   data () {
     return {
-      names: ["Aaron Swartz","Jimmy Wales","John Perry Barlow","Margaret hamilton"],
       promotions: []
     }
   },

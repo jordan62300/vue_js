@@ -1,6 +1,10 @@
 <template>
     <div class="promotion">
-        <h1>{{ name }}</h1>
+        <h1>{{ promotion.name }}</h1>
+        <input type="text" v-model="promotion.name">
+       <div> {{ promotion.id }}
+         - Début: {{ promotion.startDate }}
+          - Fin: {{ promotion.endDate }}</div> 
     </div>
 </template>
 
@@ -8,7 +12,12 @@
 export default {
   name: 'Promotion',
   props: {
-      name: String
+      promotion: Object,
+    },
+    methods: {
+        update(event) {
+            console.log(event.target.value);
+        }
     }
   };
 
