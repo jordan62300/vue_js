@@ -5,6 +5,8 @@
        <div> {{ promotion.id }}
          - Début: {{ promotion.startDate }}
           - Fin: {{ promotion.endDate }}</div> 
+          <button v-on:click="updatePromotion">Update</button>
+          <button v-on:click="deletePromotion">Delete</button>
           <Student  v-for="(studentURL,index) in promotion.students" v-bin:key="index" v-bind:myURL="studentURL"></Student>
        <!--   <ul class="studentList">
             <li v-for="studentURL in promotion.students" class="studentItem">{{ studentURL }}</li>
@@ -25,11 +27,24 @@ export default {
         Student,
     },
     methods: {
-        update(event) {
-            console.log(promotion.name + "updated");
+        updatePromotion(event) {
+            console.log(this.promotion.name + " updated");
+            fetch("http://api-students.popschool-lens.fr" + this.promotion["@id"], {
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                method: "PUT",
+                body: JSON.stringify({
+                    name: this.promotion.name
+                })
+            })
         },
-        delete(event) {
-            console.log(promotion.name + "deleted")
+        deletePromotion(event) {
+            console.log(this.promotion.name + " deleted")
+            fetch("http://api-students.popschool.fr" + this.promotion["@id"],{
+                method: "DELETE"
+            })
         }
     }
   };
