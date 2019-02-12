@@ -5,14 +5,24 @@
        <div> {{ promotion.id }}
          - Début: {{ promotion.startDate }}
           - Fin: {{ promotion.endDate }}</div> 
+          <Student v-for="student in promotion.students"></Student>
+       <!--   <ul class="studentList">
+            <li v-for="studentURL in promotion.students" class="studentItem">{{ studentURL }}</li>
+          </ul> -->
     </div>
 </template>
 
 <script>
+
+import Student from './Student'
+
 export default {
   name: 'Promotion',
   props: {
       promotion: Object,
+    },
+    components: {
+        Student,
     },
     methods: {
         update(event) {
@@ -28,5 +38,21 @@ export default {
     margin: 10px;
     background-color: red;
     border: solid 1px black;
+    border-radius: 30px;
+}
+
+.studentList{
+    display:flex;
+    border:2px dotted red;
+    border-radius:30px;
+    margin:5px 50px;
+    background-color:grey;
+}
+
+.studentItem{
+    display: block;
+    border: 1px solid black;
+    background-color: #1da1f2; 
+    padding : 6px;
 }
 </style>

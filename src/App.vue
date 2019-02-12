@@ -5,6 +5,7 @@
 
 <Promotion v-for="promotion in promotions" v-bind:key="promotion.id" v-bind:promotion="promotion"></Promotion>
 <!--<Promotion v-for="name in names" v-bind:key="name" v-bind:name="name"></Promotion> -->
+
   </div>
 </template>
 
@@ -12,6 +13,7 @@
 // import HelloWorld from './components/HelloWorld'
 import Teste from './components/Teste';
 import Promotion from './components/Promotion';
+import Student from './components/Student';
 
 export default {
   name: 'App',
